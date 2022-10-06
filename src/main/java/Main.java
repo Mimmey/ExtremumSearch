@@ -32,7 +32,7 @@ public class Main {
         double newtonMin = newtonMethod.findMinExtremum(functionNonDifferentiableView, newtonMinPoint);
 
         System.out.printf("Half division: (%f; %f)\n", halfDivisionMinPoint, halfDivisionMin);
-        System.out.printf("Golden ration: (%f; %f)\n", goldenRatioMinPoint, goldenRatioMin);
+        System.out.printf("Golden ratio: (%f; %f)\n", goldenRatioMinPoint, goldenRatioMin);
         System.out.printf("Chords: (%f; %f)\n", chordsMinPoint, chordsMin);
         System.out.printf("Newton: (%f; %f)\n", newtonMinPoint, newtonMin);
     }
