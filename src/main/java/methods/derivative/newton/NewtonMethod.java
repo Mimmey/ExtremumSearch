@@ -25,7 +25,6 @@ public class NewtonMethod implements DerivativeExtremumSearchMethod {
         double firstDerivative = function.value(new DerivativeStructure(1, 1, 0, xkPrev)).getPartialDerivative(1);
         double secondDerivative = function.value(new DerivativeStructure(1, 2, 0, xkPrev)).getPartialDerivative(2);
 
-
         return xkPrev - firstDerivative / secondDerivative;
     }
 }
