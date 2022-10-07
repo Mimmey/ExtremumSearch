@@ -9,7 +9,7 @@ import static java.lang.Math.abs;
 public class NewtonMethod implements DerivativeExtremumSearchMethod {
 
     @Override
-    public double findMinExtremumPoint(UnivariateDifferentiableFunction function, double accuracy, double start, double end) {
+    public double findExtremumPoint(UnivariateDifferentiableFunction function, double accuracy, double start, double end) {
         double xk = start;
         double derivativeInXk = function.value(new DerivativeStructure(1, 1, 0, xk)).getPartialDerivative(1);
 
