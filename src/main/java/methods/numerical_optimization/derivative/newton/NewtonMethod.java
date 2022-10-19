@@ -1,6 +1,6 @@
-package methods.derivative.newton;
+package methods.numerical_optimization.derivative.newton;
 
-import methods.derivative.DerivativeExtremumSearchMethod;
+import methods.numerical_optimization.derivative.DerivativeExtremumSearchMethod;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 

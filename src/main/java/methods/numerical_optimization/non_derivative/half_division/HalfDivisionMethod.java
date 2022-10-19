@@ -1,6 +1,6 @@
-package methods.non_derivative.half_division;
+package methods.numerical_optimization.non_derivative.half_division;
 
-import methods.non_derivative.NonDerivativeExtremumSearchMethod;
+import methods.numerical_optimization.non_derivative.NonDerivativeExtremumSearchMethod;
 import org.apache.commons.math3.analysis.UnivariateFunction;
 
 public class HalfDivisionMethod implements NonDerivativeExtremumSearchMethod {

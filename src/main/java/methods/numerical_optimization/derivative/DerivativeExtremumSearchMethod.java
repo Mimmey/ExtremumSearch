@@ -1,9 +1,9 @@
-package methods.derivative;
+package methods.numerical_optimization.derivative;
 
-import methods.ExtremumSearchMethod;
+import methods.UnivariateExtremumSearchMethod;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
-public interface DerivativeExtremumSearchMethod extends ExtremumSearchMethod<UnivariateDifferentiableFunction> {
+public interface DerivativeExtremumSearchMethod extends UnivariateExtremumSearchMethod<UnivariateDifferentiableFunction> {
 
     double findExtremumPoint(UnivariateDifferentiableFunction function, double accuracy, double start, double end);
 

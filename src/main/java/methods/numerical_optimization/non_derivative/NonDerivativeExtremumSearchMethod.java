@@ -1,9 +1,9 @@
-package methods.non_derivative;
+package methods.numerical_optimization.non_derivative;
 
-import methods.ExtremumSearchMethod;
+import methods.UnivariateExtremumSearchMethod;
 import org.apache.commons.math3.analysis.UnivariateFunction;
 
-public interface NonDerivativeExtremumSearchMethod extends ExtremumSearchMethod<UnivariateFunction> {
+public interface NonDerivativeExtremumSearchMethod extends UnivariateExtremumSearchMethod<UnivariateFunction> {
 
     double findMinExtremumPoint(UnivariateFunction function, double accuracy, double start, double end);
 

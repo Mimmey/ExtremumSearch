@@ -1,6 +1,6 @@
-package methods.non_derivative.golden_ratio;
+package methods.numerical_optimization.non_derivative.golden_ratio;
 
-import methods.non_derivative.NonDerivativeExtremumSearchMethod;
+import methods.numerical_optimization.non_derivative.NonDerivativeExtremumSearchMethod;
 import org.apache.commons.math3.analysis.UnivariateFunction;
 
 public class GoldenRatioMethod implements NonDerivativeExtremumSearchMethod {

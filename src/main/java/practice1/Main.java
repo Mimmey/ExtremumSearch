@@ -1,10 +1,11 @@
-import methods.MyFunction;
-import methods.derivative.DerivativeExtremumSearchMethod;
-import methods.derivative.chords.ChordsMethod;
-import methods.derivative.newton.NewtonMethod;
-import methods.non_derivative.NonDerivativeExtremumSearchMethod;
-import methods.non_derivative.golden_ratio.GoldenRatioMethod;
-import methods.non_derivative.half_division.HalfDivisionMethod;
+package practice1;
+
+import methods.numerical_optimization.derivative.DerivativeExtremumSearchMethod;
+import methods.numerical_optimization.derivative.chords.ChordsMethod;
+import methods.numerical_optimization.derivative.newton.NewtonMethod;
+import methods.numerical_optimization.non_derivative.NonDerivativeExtremumSearchMethod;
+import methods.numerical_optimization.non_derivative.golden_ratio.GoldenRatioMethod;
+import methods.numerical_optimization.non_derivative.half_division.HalfDivisionMethod;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
 public class Main {
