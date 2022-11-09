@@ -1,4 +1,4 @@
-package practice2.interfaces;
+package methods.util.interfaces;
 
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import org.apache.commons.math3.exception.DimensionMismatchException;

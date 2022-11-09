@@ -1,15 +1,16 @@
 package practice2;
 
+import methods.util.points.ThreeDimensionalPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
-import practice2.interfaces.TernarvariateDifferentiableFunction;
+import methods.util.interfaces.TernarvariateDifferentiableFunction;
 
 public class MyFunction implements TernarvariateDifferentiableFunction {
 
     @Override
     public double value(ThreeDimensionalPoint point) {
-        return value(new DerivativeStructure(3, 1, 0, point.getX1()),
-                new DerivativeStructure(3, 1, 1, point.getX2()),
-                new DerivativeStructure(3, 1, 2, point.getX3())).getValue();
+        return value(new DerivativeStructure(3, 1, 0, point.getX()),
+                new DerivativeStructure(3, 1, 1, point.getY()),
+                new DerivativeStructure(3, 1, 2, point.getZ())).getValue();
     }
 
     @Override

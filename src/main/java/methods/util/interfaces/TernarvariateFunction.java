@@ -1,6 +1,6 @@
-package practice2.interfaces;
+package methods.util.interfaces;
 
-import practice2.ThreeDimensionalPoint;
+import methods.util.points.ThreeDimensionalPoint;
 
 public interface TernarvariateFunction {
     double value(ThreeDimensionalPoint point);

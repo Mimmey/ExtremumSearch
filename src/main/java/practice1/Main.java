@@ -1,11 +1,11 @@
 package practice1;
 
-import methods.numerical_optimization.derivative.DerivativeExtremumSearchMethod;
-import methods.numerical_optimization.derivative.chords.ChordsMethod;
-import methods.numerical_optimization.derivative.newton.NewtonMethod;
-import methods.numerical_optimization.non_derivative.NonDerivativeExtremumSearchMethod;
-import methods.numerical_optimization.non_derivative.golden_ratio.GoldenRatioMethod;
-import methods.numerical_optimization.non_derivative.half_division.HalfDivisionMethod;
+import methods.UnivariateExtremumSearchMethod;
+import methods.numerical_optimization.chords.ChordsMethod;
+import methods.numerical_optimization.newton.NewtonMethod;
+import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
+import methods.numerical_optimization.half_division.HalfDivisionMethod;
+import methods.util.points.TwoDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
 public class Main {
@@ -16,24 +16,19 @@ public class Main {
         final double b = 3.5;
         final double accuracy = 0.02;
 
-        NonDerivativeExtremumSearchMethod halfDivisionMethod = new HalfDivisionMethod();
-        NonDerivativeExtremumSearchMethod goldenRatioMethod = new GoldenRatioMethod();
-        DerivativeExtremumSearchMethod chordsMethod = new ChordsMethod();
-        DerivativeExtremumSearchMethod newtonMethod = new NewtonMethod();
+        UnivariateExtremumSearchMethod halfDivisionMethod = new HalfDivisionMethod();
+        UnivariateExtremumSearchMethod goldenRatioMethod = new GoldenRatioMethod();
+        UnivariateExtremumSearchMethod chordsMethod = new ChordsMethod();
+        UnivariateExtremumSearchMethod newtonMethod = new NewtonMethod();
 
-        double halfDivisionMinPoint = halfDivisionMethod.findMinExtremumPoint(function, accuracy, a, b);
-        double goldenRatioMinPoint = goldenRatioMethod.findMinExtremumPoint(function, accuracy, a, b);
-        double chordsMinPoint = chordsMethod.findExtremumPoint(function, accuracy, a, b);
-        double newtonMinPoint = newtonMethod.findExtremumPoint(function, accuracy, a, b);
+        TwoDimensionalExtremumPoint halfDivisionExtremumPoint = halfDivisionMethod.findExtremumPoint(function, accuracy, a, b);
+        TwoDimensionalExtremumPoint goldenRatioExtremumPoint = goldenRatioMethod.findExtremumPoint(function, accuracy, a, b);
+        TwoDimensionalExtremumPoint chordsExtremumPoint = chordsMethod.findExtremumPoint(function, accuracy, a, b);
+        TwoDimensionalExtremumPoint newtonExtremumPoint = newtonMethod.findExtremumPoint(function, accuracy, a, b);
 
-        double halfDivisionMin = halfDivisionMethod.findMinExtremum(function, accuracy, a, b);
-        double goldenRatioMin = goldenRatioMethod.findMinExtremum(function, accuracy, a, b);
-        double chordsMin = chordsMethod.findExtremum(function, accuracy, a, b);
-        double newtonMin = newtonMethod.findExtremum(function, accuracy, a, b);
-
-        System.out.printf("Half division: (%f; %f)\n", halfDivisionMinPoint, halfDivisionMin);
-        System.out.printf("Golden ratio: (%f; %f)\n", goldenRatioMinPoint, goldenRatioMin);
-        System.out.printf("Chords: (%f; %f)\n", chordsMinPoint, chordsMin);
-        System.out.printf("Newton: (%f; %f)\n", newtonMinPoint, newtonMin);
+        System.out.println("Half division: " + halfDivisionExtremumPoint.toString());
+        System.out.println("Golden ratio: " + goldenRatioExtremumPoint.toString());
+        System.out.println("Chords: " + chordsExtremumPoint.toString());
+        System.out.println("Newton: " + newtonExtremumPoint.toString());
     }
 }

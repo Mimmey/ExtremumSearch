@@ -1,8 +1,9 @@
 package practice2;
 
-import methods.gradient_descent.GradientDescentMethodImpl;
 import methods.gradient_descent.GradientDescentMethod;
-import practice2.interfaces.TernarvariateDifferentiableFunction;
+import methods.util.points.FourDimensionalExtremumPoint;
+import methods.util.points.ThreeDimensionalPoint;
+import methods.util.interfaces.TernarvariateDifferentiableFunction;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,11 +13,10 @@ public class Main {
         final double step = 0.05;
         final ThreeDimensionalPoint startPoint = new ThreeDimensionalPoint(0, 0, 0);
 
-        GradientDescentMethod gradientDescent = new GradientDescentMethodImpl();
+        GradientDescentMethod gradientDescent = new GradientDescentMethod();
 
-        ThreeDimensionalPoint extremumPoint = gradientDescent.findExtremumPoint(function, accuracy, startPoint, step);
-        double extremum = gradientDescent.findExtremum(function, accuracy, startPoint, step);
+        FourDimensionalExtremumPoint extremumPoint = gradientDescent.findExtremumPoint(function, accuracy, startPoint, step);
 
-        System.out.printf("Gradient Descent: x = %s; y = %s\n", extremumPoint, extremum);
+        System.out.println("Gradient Descent: " +  extremumPoint);
     }
 }
