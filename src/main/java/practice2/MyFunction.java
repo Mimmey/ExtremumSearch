@@ -1,6 +1,6 @@
 package practice2;
 
-import methods.util.points.ThreeDimensionalPoint;
+import methods.utils.points.ThreeDimensionalPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import methods.functions.TernaryDifferentiableFunction;
 
@@ -14,7 +14,9 @@ public class MyFunction implements TernaryDifferentiableFunction {
     }
 
     @Override
-    public DerivativeStructure value(DerivativeStructure x1, DerivativeStructure x2, DerivativeStructure x3) {
+    public DerivativeStructure value(DerivativeStructure x1,
+                                     DerivativeStructure x2,
+                                     DerivativeStructure x3) {
         DerivativeStructure firstComponent = x1.pow(2).multiply(2);
         DerivativeStructure secondComponent = x2.pow(3);
         DerivativeStructure thirdComponent = x3.pow(2);

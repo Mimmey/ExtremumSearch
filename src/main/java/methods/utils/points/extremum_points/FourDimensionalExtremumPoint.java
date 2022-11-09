@@ -1,8 +1,8 @@
-package methods.util.points.extremum_points;
+package methods.utils.points.extremum_points;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import methods.util.ExtremumType;
+import methods.utils.ExtremumType;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class FourDimensionalExtremumPoint {
@@ -12,7 +12,11 @@ public class FourDimensionalExtremumPoint {
     double w;
     ExtremumType type;
 
-    public static FourDimensionalExtremumPoint of(double x, double y, double z, double w, ExtremumType type) {
+    public static FourDimensionalExtremumPoint of(double x,
+                                                  double y,
+                                                  double z,
+                                                  double w,
+                                                  ExtremumType type) {
         return new FourDimensionalExtremumPoint(x, y, z, w, ExtremumType.valueOf(type.name()));
     }
 

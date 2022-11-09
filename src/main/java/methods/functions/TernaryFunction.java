@@ -1,6 +1,6 @@
 package methods.functions;
 
-import methods.util.points.ThreeDimensionalPoint;
+import methods.utils.points.ThreeDimensionalPoint;
 
 public interface TernaryFunction {
     double value(ThreeDimensionalPoint point);

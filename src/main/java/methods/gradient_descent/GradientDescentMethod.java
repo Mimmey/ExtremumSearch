@@ -1,9 +1,9 @@
 package methods.gradient_descent;
 
 import methods.TernaryExtremumSearchMethod;
-import methods.util.points.extremum_points.FourDimensionalExtremumPoint;
+import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
-import methods.util.points.ThreeDimensionalPoint;
+import methods.utils.points.ThreeDimensionalPoint;
 import methods.functions.TernaryDifferentiableFunction;
 
 public class GradientDescentMethod extends TernaryExtremumSearchMethod {

@@ -5,7 +5,7 @@ import methods.numerical_optimization.chords.ChordsMethod;
 import methods.numerical_optimization.newton.NewtonMethod;
 import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
 import methods.numerical_optimization.half_division.HalfDivisionMethod;
-import methods.util.points.extremum_points.TwoDimensionalExtremumPoint;
+import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
 public class Main {
@@ -21,10 +21,17 @@ public class Main {
         UnivariateExtremumSearchMethod chordsMethod = new ChordsMethod();
         UnivariateExtremumSearchMethod newtonMethod = new NewtonMethod();
 
-        TwoDimensionalExtremumPoint halfDivisionExtremumPoint = halfDivisionMethod.findExtremumPoint(function, accuracy, a, b);
-        TwoDimensionalExtremumPoint goldenRatioExtremumPoint = goldenRatioMethod.findExtremumPoint(function, accuracy, a, b);
-        TwoDimensionalExtremumPoint chordsExtremumPoint = chordsMethod.findExtremumPoint(function, accuracy, a, b);
-        TwoDimensionalExtremumPoint newtonExtremumPoint = newtonMethod.findExtremumPoint(function, accuracy, a, b);
+        TwoDimensionalExtremumPoint halfDivisionExtremumPoint =
+                halfDivisionMethod.findExtremumPoint(function, accuracy, a, b);
+
+        TwoDimensionalExtremumPoint goldenRatioExtremumPoint =
+                goldenRatioMethod.findExtremumPoint(function, accuracy, a, b);
+
+        TwoDimensionalExtremumPoint chordsExtremumPoint =
+                chordsMethod.findExtremumPoint(function, accuracy, a, b);
+
+        TwoDimensionalExtremumPoint newtonExtremumPoint =
+                newtonMethod.findExtremumPoint(function, accuracy, a, b);
 
         System.out.println("Half division: " + halfDivisionExtremumPoint.toString());
         System.out.println("Golden ratio: " + goldenRatioExtremumPoint.toString());

@@ -1,4 +1,4 @@
-package methods.util.points;
+package methods.utils.points;
 
 import lombok.*;
 

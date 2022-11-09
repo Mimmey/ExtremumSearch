@@ -1,8 +1,8 @@
 package practice2;
 
 import methods.gradient_descent.GradientDescentMethod;
-import methods.util.points.extremum_points.FourDimensionalExtremumPoint;
-import methods.util.points.ThreeDimensionalPoint;
+import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
+import methods.utils.points.ThreeDimensionalPoint;
 import methods.functions.TernaryDifferentiableFunction;
 
 public class Main {
@@ -15,7 +15,8 @@ public class Main {
 
         GradientDescentMethod gradientDescent = new GradientDescentMethod();
 
-        FourDimensionalExtremumPoint extremumPoint = gradientDescent.findExtremumPoint(function, accuracy, startPoint, step);
+        FourDimensionalExtremumPoint extremumPoint =
+                gradientDescent.findExtremumPoint(function, accuracy, startPoint, step);
 
         System.out.println("Gradient Descent: " +  extremumPoint);
     }
