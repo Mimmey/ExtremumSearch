@@ -1,25 +1,27 @@
 package practice2;
 
+import lombok.AllArgsConstructor;
 import methods.utils.points.ThreeDimensionalPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
-import methods.functions.TernaryDifferentiableFunction;
+import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
-public class MyFunction implements TernaryDifferentiableFunction {
+@AllArgsConstructor
+public class MyStepOptimizationFunction implements UnivariateDifferentiableFunction {
 
-    public final Class<MyStepOptimizationFunction> optimizationFunctionForGradientMethod
-            = MyStepOptimizationFunction.class;
+    ThreeDimensionalPoint point;
+    ThreeDimensionalPoint gradient;
 
     @Override
-    public double value(ThreeDimensionalPoint point) {
-        return value(new DerivativeStructure(3, 1, 0, point.getX()),
-                new DerivativeStructure(3, 1, 1, point.getY()),
-                new DerivativeStructure(3, 1, 2, point.getZ())).getValue();
+    public double value(double lambda) {
+        return value(new DerivativeStructure(1, 1, 0, lambda)).getValue();
     }
 
     @Override
-    public DerivativeStructure value(DerivativeStructure x1,
-                                     DerivativeStructure x2,
-                                     DerivativeStructure x3) {
+    public DerivativeStructure value(DerivativeStructure t) {
+        DerivativeStructure x1 = t.multiply(gradient.getX()).multiply(-1).add(point.getX());
+        DerivativeStructure x2 = t.multiply(gradient.getY()).multiply(-1).add(point.getY());
+        DerivativeStructure x3 = t.multiply(gradient.getZ()).multiply(-1).add(point.getZ());
+
         DerivativeStructure firstComponent = x1.pow(2).multiply(2);
         DerivativeStructure secondComponent = x2.pow(3);
         DerivativeStructure thirdComponent = x3.pow(2);

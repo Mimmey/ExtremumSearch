@@ -2,9 +2,11 @@ package methods.utils.points.extremum_points;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import methods.utils.ExtremumType;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
 public class TwoDimensionalExtremumPoint {
     double x;
     double y;

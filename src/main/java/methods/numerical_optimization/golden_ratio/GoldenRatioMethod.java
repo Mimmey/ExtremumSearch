@@ -13,9 +13,9 @@ public class GoldenRatioMethod extends UnivariateExtremumSearchMethod {
                                                          double start,
                                                          double end) {
         ExtremumType extremumType = findExtremumType(function, start);
-        return extremumType.equals(ExtremumType.MIN)
-                ? findMinExtremumPoint(function, accuracy, start, end)
-                : findMaxExtremumPoint(function, accuracy, start, end);
+        return extremumType.equals(ExtremumType.MAX)
+                ? findMaxExtremumPoint(function, accuracy, start, end)
+                : findMinExtremumPoint(function, accuracy, start, end);
     }
 
     private TwoDimensionalExtremumPoint findMinExtremumPoint(UnivariateDifferentiableFunction function,

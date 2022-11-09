@@ -1,15 +1,24 @@
 package methods.gradient_descent;
 
 import methods.TernaryExtremumSearchMethod;
+import methods.UnivariateExtremumSearchMethod;
+import methods.numerical_optimization.chords.ChordsMethod;
+import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
+import methods.numerical_optimization.half_division.HalfDivisionMethod;
+import methods.numerical_optimization.newton.NewtonMethod;
 import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import methods.utils.points.ThreeDimensionalPoint;
 import methods.functions.TernaryDifferentiableFunction;
+import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class GradientDescentMethod extends TernaryExtremumSearchMethod {
 
     @Override
-    public FourDimensionalExtremumPoint findExtremumPoint(TernaryDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint, double step) {
+    public FourDimensionalExtremumPoint findExtremumPoint(TernaryDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint) {
         double currentAccuracy = Integer.MAX_VALUE;
         ThreeDimensionalPoint oldPoint = startPoint;
         ThreeDimensionalPoint newPoint = new ThreeDimensionalPoint();
@@ -28,17 +37,14 @@ public class GradientDescentMethod extends TernaryExtremumSearchMethod {
 
             newPoint = new ThreeDimensionalPoint();
 
-            newPoint.setX(oldPoint.getX() + step * gradient.getX());
-            newPoint.setY(oldPoint.getY() + step * gradient.getY());
-            newPoint.setZ(oldPoint.getZ() + step * gradient.getZ());
+            double step = findStep(function, oldPoint, gradient);
+            System.out.println("Lambda: " + step);
 
-            double newAccuracy = Math.abs(function.value(newPoint) - function.value(oldPoint));
+            newPoint.setX(oldPoint.getX() - step * gradient.getX());
+            newPoint.setY(oldPoint.getY() - step * gradient.getY());
+            newPoint.setZ(oldPoint.getZ() - step * gradient.getZ());
 
-            if (newAccuracy >= currentAccuracy) {
-                throw new IllegalArgumentException("Выбран слишком большой шаг");
-            }
-
-            currentAccuracy = newAccuracy;
+            currentAccuracy = Math.abs(function.value(newPoint) - function.value(oldPoint));
             oldPoint = newPoint;
         }
 
@@ -48,5 +54,38 @@ public class GradientDescentMethod extends TernaryExtremumSearchMethod {
                 newPoint.getZ(),
                 function.value(newPoint),
                 findExtremumType(function, startPoint));
+    }
+
+    private double findStep(TernaryDifferentiableFunction function,
+                            ThreeDimensionalPoint point,
+                            ThreeDimensionalPoint gradient) {
+
+        UnivariateDifferentiableFunction stepOptimizationFunction =
+                tryFindStepOptimizationFunction(function, point, gradient);
+
+        UnivariateExtremumSearchMethod optimizationMethod = new GoldenRatioMethod();
+
+        return optimizationMethod.findExtremumPoint(
+                stepOptimizationFunction, 0.00001, 0, 0.01
+        ).getX();
+    }
+
+    private UnivariateDifferentiableFunction tryFindStepOptimizationFunction(TernaryDifferentiableFunction function,
+                                                                             ThreeDimensionalPoint point,
+                                                                             ThreeDimensionalPoint gradient) {
+        try {
+            Class<?> stepOptimizationFunctionClass = FunctionsToOptimizationFunctions
+                    .relationMap
+                    .get(function.getClass());
+
+            Constructor<?> constructor = stepOptimizationFunctionClass
+                    .getConstructor(ThreeDimensionalPoint.class, ThreeDimensionalPoint.class);
+
+            return (UnivariateDifferentiableFunction) constructor.newInstance(point, gradient);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

@@ -10,8 +10,7 @@ public abstract class TernaryExtremumSearchMethod {
 
     public abstract FourDimensionalExtremumPoint findExtremumPoint(TernaryDifferentiableFunction function,
                                                                    double accuracy,
-                                                                   ThreeDimensionalPoint startPoint,
-                                                                   double step);
+                                                                   ThreeDimensionalPoint startPoint);
 
     protected ExtremumType findExtremumType(TernaryDifferentiableFunction function,
                                             ThreeDimensionalPoint point) {
