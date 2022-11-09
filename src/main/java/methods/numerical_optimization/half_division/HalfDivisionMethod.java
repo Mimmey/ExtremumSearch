@@ -1,7 +1,7 @@
 package methods.numerical_optimization.half_division;
 
 import methods.UnivariateExtremumSearchMethod;
-import methods.util.points.TwoDimensionalExtremumPoint;
+import methods.util.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.util.ExtremumType;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 

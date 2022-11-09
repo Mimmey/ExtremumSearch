@@ -5,7 +5,7 @@ import methods.numerical_optimization.chords.ChordsMethod;
 import methods.numerical_optimization.newton.NewtonMethod;
 import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
 import methods.numerical_optimization.half_division.HalfDivisionMethod;
-import methods.util.points.TwoDimensionalExtremumPoint;
+import methods.util.points.extremum_points.TwoDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
 public class Main {

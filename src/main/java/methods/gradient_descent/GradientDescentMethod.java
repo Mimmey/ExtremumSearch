@@ -1,15 +1,15 @@
 package methods.gradient_descent;
 
-import methods.TernarvariateExtremumSearchMethod;
-import methods.util.points.FourDimensionalExtremumPoint;
+import methods.TernaryExtremumSearchMethod;
+import methods.util.points.extremum_points.FourDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import methods.util.points.ThreeDimensionalPoint;
-import methods.util.interfaces.TernarvariateDifferentiableFunction;
+import methods.functions.TernaryDifferentiableFunction;
 
-public class GradientDescentMethod extends TernarvariateExtremumSearchMethod {
+public class GradientDescentMethod extends TernaryExtremumSearchMethod {
 
     @Override
-    public FourDimensionalExtremumPoint findExtremumPoint(TernarvariateDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint, double step) {
+    public FourDimensionalExtremumPoint findExtremumPoint(TernaryDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint, double step) {
         double currentAccuracy = Integer.MAX_VALUE;
         ThreeDimensionalPoint oldPoint = startPoint;
         ThreeDimensionalPoint newPoint = new ThreeDimensionalPoint();

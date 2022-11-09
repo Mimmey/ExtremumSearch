@@ -1,13 +1,13 @@
 package practice2;
 
 import methods.gradient_descent.GradientDescentMethod;
-import methods.util.points.FourDimensionalExtremumPoint;
+import methods.util.points.extremum_points.FourDimensionalExtremumPoint;
 import methods.util.points.ThreeDimensionalPoint;
-import methods.util.interfaces.TernarvariateDifferentiableFunction;
+import methods.functions.TernaryDifferentiableFunction;
 
 public class Main {
     public static void main(String[] args) {
-        TernarvariateDifferentiableFunction function = new MyFunction();
+        TernaryDifferentiableFunction function = new MyFunction();
 
         final double accuracy = 0.05;
         final double step = 0.05;

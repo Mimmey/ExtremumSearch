@@ -1,16 +1,16 @@
 package methods;
 
 import methods.util.ExtremumType;
-import methods.util.points.FourDimensionalExtremumPoint;
+import methods.util.points.extremum_points.FourDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import methods.util.points.ThreeDimensionalPoint;
-import methods.util.interfaces.TernarvariateDifferentiableFunction;
+import methods.functions.TernaryDifferentiableFunction;
 
-public abstract class TernarvariateExtremumSearchMethod {
+public abstract class TernaryExtremumSearchMethod {
 
-    public abstract FourDimensionalExtremumPoint findExtremumPoint(TernarvariateDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint, double step);
+    public abstract FourDimensionalExtremumPoint findExtremumPoint(TernaryDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint, double step);
 
-    protected ExtremumType findExtremumType(TernarvariateDifferentiableFunction function, ThreeDimensionalPoint point) {
+    protected ExtremumType findExtremumType(TernaryDifferentiableFunction function, ThreeDimensionalPoint point) {
         ThreeDimensionalPoint secondGradient = new ThreeDimensionalPoint();
 
         DerivativeStructure functionInDerivativeView = function.value(

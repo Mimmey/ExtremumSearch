@@ -2,9 +2,9 @@ package practice2;
 
 import methods.util.points.ThreeDimensionalPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
-import methods.util.interfaces.TernarvariateDifferentiableFunction;
+import methods.functions.TernaryDifferentiableFunction;
 
-public class MyFunction implements TernarvariateDifferentiableFunction {
+public class MyFunction implements TernaryDifferentiableFunction {
 
     @Override
     public double value(ThreeDimensionalPoint point) {

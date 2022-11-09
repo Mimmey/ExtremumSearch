@@ -1,4 +1,4 @@
-package methods.util.points;
+package methods.util.points.extremum_points;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
