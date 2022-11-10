@@ -1,11 +1,11 @@
 package methods.numerical_optimization.golden_ratio;
 
-import methods.UnivariateExtremumSearchMethod;
+import methods.UnivariativeExtremumSearchMethod;
 import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.utils.ExtremumType;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
-public class GoldenRatioMethod extends UnivariateExtremumSearchMethod {
+public class GoldenRatioMethod extends UnivariativeExtremumSearchMethod {
 
     @Override
     public TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,

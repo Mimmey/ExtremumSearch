@@ -1,7 +1,7 @@
 package methods.numerical_optimization.chords;
 
 import lombok.AllArgsConstructor;
-import methods.UnivariateExtremumSearchMethod;
+import methods.UnivariativeExtremumSearchMethod;
 import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.utils.ExtremumType;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
@@ -10,7 +10,7 @@ import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiabl
 import static java.lang.Math.abs;
 
 @AllArgsConstructor
-public class ChordsMethod extends UnivariateExtremumSearchMethod {
+public class ChordsMethod extends UnivariativeExtremumSearchMethod {
 
     @Override
     public TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,

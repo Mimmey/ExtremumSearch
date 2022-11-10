@@ -1,11 +1,11 @@
 package methods.numerical_optimization.half_division;
 
-import methods.UnivariateExtremumSearchMethod;
+import methods.UnivariativeExtremumSearchMethod;
 import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.utils.ExtremumType;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
-public class HalfDivisionMethod extends UnivariateExtremumSearchMethod {
+public class HalfDivisionMethod extends UnivariativeExtremumSearchMethod {
 
     @Override
     public TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,

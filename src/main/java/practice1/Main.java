@@ -1,6 +1,6 @@
 package practice1;
 
-import methods.UnivariateExtremumSearchMethod;
+import methods.UnivariativeExtremumSearchMethod;
 import methods.numerical_optimization.chords.ChordsMethod;
 import methods.numerical_optimization.newton.NewtonMethod;
 import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
@@ -16,10 +16,10 @@ public class Main {
         final double b = 3.5;
         final double accuracy = 0.02;
 
-        UnivariateExtremumSearchMethod halfDivisionMethod = new HalfDivisionMethod();
-        UnivariateExtremumSearchMethod goldenRatioMethod = new GoldenRatioMethod();
-        UnivariateExtremumSearchMethod chordsMethod = new ChordsMethod();
-        UnivariateExtremumSearchMethod newtonMethod = new NewtonMethod();
+        UnivariativeExtremumSearchMethod halfDivisionMethod = new HalfDivisionMethod();
+        UnivariativeExtremumSearchMethod goldenRatioMethod = new GoldenRatioMethod();
+        UnivariativeExtremumSearchMethod chordsMethod = new ChordsMethod();
+        UnivariativeExtremumSearchMethod newtonMethod = new NewtonMethod();
 
         TwoDimensionalExtremumPoint halfDivisionExtremumPoint =
                 halfDivisionMethod.findExtremumPoint(function, accuracy, a, b);

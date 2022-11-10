@@ -1,11 +1,8 @@
 package methods.gradient_descent;
 
 import methods.TernaryExtremumSearchMethod;
-import methods.UnivariateExtremumSearchMethod;
-import methods.numerical_optimization.chords.ChordsMethod;
+import methods.UnivariativeExtremumSearchMethod;
 import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
-import methods.numerical_optimization.half_division.HalfDivisionMethod;
-import methods.numerical_optimization.newton.NewtonMethod;
 import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import methods.utils.points.ThreeDimensionalPoint;
@@ -13,7 +10,6 @@ import methods.functions.TernaryDifferentiableFunction;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 public class GradientDescentMethod extends TernaryExtremumSearchMethod {
 
@@ -63,11 +59,11 @@ public class GradientDescentMethod extends TernaryExtremumSearchMethod {
         UnivariateDifferentiableFunction stepOptimizationFunction =
                 tryFindStepOptimizationFunction(function, point, gradient);
 
-        UnivariateExtremumSearchMethod optimizationMethod = new GoldenRatioMethod();
+        UnivariativeExtremumSearchMethod optimizationMethod = new GoldenRatioMethod();
 
-        return optimizationMethod.findExtremumPoint(
+        return optimizationMethod.findMinExtremumPoint(
                 stepOptimizationFunction, 0.00001, 0, 0.01
-        ).getX();
+        ).get().getX();
     }
 
     private UnivariateDifferentiableFunction tryFindStepOptimizationFunction(TernaryDifferentiableFunction function,

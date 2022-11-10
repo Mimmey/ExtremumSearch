@@ -1,6 +1,6 @@
 package methods.numerical_optimization.newton;
 
-import methods.UnivariateExtremumSearchMethod;
+import methods.UnivariativeExtremumSearchMethod;
 import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.utils.ExtremumType;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
@@ -8,7 +8,7 @@ import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiabl
 
 import static java.lang.Math.abs;
 
-public class NewtonMethod extends UnivariateExtremumSearchMethod {
+public class NewtonMethod extends UnivariativeExtremumSearchMethod {
 
     @Override
     public TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,
