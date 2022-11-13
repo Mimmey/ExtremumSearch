@@ -1,11 +1,10 @@
 package practice2;
 
+import methods.functions.TernaryDifferentiableFunction;
 import methods.gradient_descent.GradientDescentMethod;
 import methods.utils.ExtremumType;
-import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
 import methods.utils.points.ThreeDimensionalPoint;
-import methods.functions.TernaryDifferentiableFunction;
-import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
+import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
 
 public class Main {
     public static void main(String[] args) {
