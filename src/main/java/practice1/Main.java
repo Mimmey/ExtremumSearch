@@ -11,10 +11,12 @@ import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
 public class Main {
+
+    final static double DUMMY = -1000.0;
+
     public static void main(String[] args) {
         UnivariateDifferentiableFunction function = new MyFunction();
 
-        final double dummyNoPointPresent = -1000;
         final double a = 3.0;
         final double b = 3.5;
         final double accuracy = 0.1;
@@ -27,23 +29,23 @@ public class Main {
 
         TwoDimensionalExtremumPoint halfDivisionExtremumPoint =
                 halfDivisionMethod.findMinExtremumPoint(function, accuracy, a, b)
-                        .orElse(TwoDimensionalExtremumPoint.of(dummyNoPointPresent, dummyNoPointPresent, ExtremumType.UNKNOWN));
+                        .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint goldenRatioExtremumPoint =
                 goldenRatioMethod.findMinExtremumPoint(function, accuracy, a, b)
-                        .orElse(TwoDimensionalExtremumPoint.of(dummyNoPointPresent, dummyNoPointPresent, ExtremumType.UNKNOWN));
+                        .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint chordsExtremumPoint =
                 chordsMethod.findMinExtremumPoint(function, accuracy, a, b)
-                        .orElse(TwoDimensionalExtremumPoint.of(dummyNoPointPresent, dummyNoPointPresent, ExtremumType.UNKNOWN));
+                        .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint newtonExtremumPoint =
                 newtonMethod.findMinExtremumPoint(function, accuracy, a, b)
-                        .orElse(TwoDimensionalExtremumPoint.of(dummyNoPointPresent, dummyNoPointPresent, ExtremumType.UNKNOWN));
+                        .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint squareInterpolationExtremumPoint =
                 squareInterpolationMethod.findMinExtremumPoint(function, accuracy, a, b)
-                        .orElse(TwoDimensionalExtremumPoint.of(dummyNoPointPresent, dummyNoPointPresent, ExtremumType.UNKNOWN));
+                        .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         System.out.println("Half division: " + halfDivisionExtremumPoint.toString());
         System.out.println("Golden ratio: " + goldenRatioExtremumPoint.toString());

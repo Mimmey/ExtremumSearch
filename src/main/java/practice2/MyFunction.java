@@ -6,9 +6,6 @@ import methods.functions.TernaryDifferentiableFunction;
 
 public class MyFunction implements TernaryDifferentiableFunction {
 
-    public final Class<MyStepOptimizationFunction> optimizationFunctionForGradientMethod
-            = MyStepOptimizationFunction.class;
-
     @Override
     public double value(ThreeDimensionalPoint point) {
         return value(new DerivativeStructure(3, 1, 0, point.getX()),

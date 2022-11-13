@@ -3,8 +3,12 @@ package methods.gradient_descent;
 import methods.DerivativeTernaryExtremumSearchMethod;
 import methods.TernaryExtremumSearchMethod;
 import methods.UnivariativeExtremumSearchMethod;
+import methods.numerical_optimization.chords.ChordsMethod;
 import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
+import methods.numerical_optimization.newton.NewtonMethod;
+import methods.utils.ExtremumType;
 import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
+import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import methods.utils.points.ThreeDimensionalPoint;
 import methods.functions.TernaryDifferentiableFunction;
@@ -34,7 +38,7 @@ public class GradientDescentMethod extends DerivativeTernaryExtremumSearchMethod
 
             newPoint = new ThreeDimensionalPoint();
 
-            double step = findStep(function, oldPoint, gradient);
+            double step = findStep(function, oldPoint, gradient, accuracy);
             System.out.println("Lambda: " + step);
 
             newPoint.setX(oldPoint.getX() - step * gradient.getX());
@@ -55,16 +59,23 @@ public class GradientDescentMethod extends DerivativeTernaryExtremumSearchMethod
 
     private double findStep(TernaryDifferentiableFunction function,
                             ThreeDimensionalPoint point,
-                            ThreeDimensionalPoint gradient) {
+                            ThreeDimensionalPoint gradient,
+                            double accuracy) {
 
         UnivariateDifferentiableFunction stepOptimizationFunction =
                 tryFindStepOptimizationFunction(function, point, gradient);
 
-        UnivariativeExtremumSearchMethod optimizationMethod = new GoldenRatioMethod();
+        UnivariativeExtremumSearchMethod optimizationMethod = new ChordsMethod();
 
         return optimizationMethod.findMinExtremumPoint(
-                stepOptimizationFunction, 0.00001, 0, 0.01
-        ).get().getX();
+                stepOptimizationFunction, accuracy, 0, 1
+        ).orElseGet(() -> {
+            if (stepOptimizationFunction.value(0) < stepOptimizationFunction.value(0.01)) {
+                return TwoDimensionalExtremumPoint.of(0, stepOptimizationFunction.value(0), ExtremumType.MIN);
+            }
+
+            return TwoDimensionalExtremumPoint.of(0.01, stepOptimizationFunction.value(0.01), ExtremumType.MIN);
+        }).getX();
     }
 
     private UnivariateDifferentiableFunction tryFindStepOptimizationFunction(TernaryDifferentiableFunction function,
