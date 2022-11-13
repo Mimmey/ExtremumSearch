@@ -1,5 +1,6 @@
 package methods.gradient_descent;
 
+import methods.DerivativeTernaryExtremumSearchMethod;
 import methods.TernaryExtremumSearchMethod;
 import methods.UnivariativeExtremumSearchMethod;
 import methods.numerical_optimization.golden_ratio.GoldenRatioMethod;
@@ -11,7 +12,7 @@ import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiabl
 
 import java.lang.reflect.Constructor;
 
-public class GradientDescentMethod extends TernaryExtremumSearchMethod {
+public class GradientDescentMethod extends DerivativeTernaryExtremumSearchMethod {
 
     @Override
     public FourDimensionalExtremumPoint findExtremumPoint(TernaryDifferentiableFunction function, double accuracy, ThreeDimensionalPoint startPoint) {

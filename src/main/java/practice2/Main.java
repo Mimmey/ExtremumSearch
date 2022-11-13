@@ -1,9 +1,11 @@
 package practice2;
 
 import methods.gradient_descent.GradientDescentMethod;
+import methods.utils.ExtremumType;
 import methods.utils.points.extremum_points.FourDimensionalExtremumPoint;
 import methods.utils.points.ThreeDimensionalPoint;
 import methods.functions.TernaryDifferentiableFunction;
+import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +17,8 @@ public class Main {
         GradientDescentMethod gradientDescent = new GradientDescentMethod();
 
         FourDimensionalExtremumPoint extremumPoint =
-                gradientDescent.findExtremumPoint(function, accuracy, startPoint);
+                gradientDescent.findMinExtremumPoint(function, accuracy, startPoint)
+                        .orElse(FourDimensionalExtremumPoint.of(0, 0, 0, 0, ExtremumType.MIN));
 
         System.out.println("Gradient Descent: " +  extremumPoint);
     }

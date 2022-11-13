@@ -9,25 +9,6 @@ import java.util.Optional;
 
 public abstract class DerivativeUnivariativeExtremumSearchMethod extends UnivariativeExtremumSearchMethod {
 
-    protected abstract TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,
-                                                                  double accuracy,
-                                                                  double start,
-                                                                  double end);
-
-    protected ExtremumType findExtremumType(UnivariateDifferentiableFunction function, double x) {
-        double secondDerivative = function.value(
-                new DerivativeStructure(1, 2, 0, x)
-        ).getPartialDerivative(2);
-
-        if (secondDerivative > 0) {
-            return ExtremumType.MIN;
-        } else if (secondDerivative < 0) {
-            return ExtremumType.MAX;
-        } else {
-            return ExtremumType.UNKNOWN;
-        }
-    }
-
     @Override
     public Optional<TwoDimensionalExtremumPoint> findMinExtremumPoint(UnivariateDifferentiableFunction function,
                                                                       double accuracy,
@@ -44,15 +25,34 @@ public abstract class DerivativeUnivariativeExtremumSearchMethod extends Univari
 
     @Override
     public Optional<TwoDimensionalExtremumPoint> findMaxExtremumPoint(UnivariateDifferentiableFunction function,
-                                                                     double accuracy,
-                                                                     double start,
-                                                                     double end) {
+                                                                      double accuracy,
+                                                                      double start,
+                                                                      double end) {
         TwoDimensionalExtremumPoint extremumPoint = findExtremumPoint(function, accuracy, start, end);
 
         if (extremumPoint.getType().equals(ExtremumType.MAX)) {
             return Optional.of(extremumPoint);
         } else {
             return Optional.empty();
+        }
+    }
+
+    protected abstract TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,
+                                                                  double accuracy,
+                                                                  double start,
+                                                                  double end);
+
+    protected ExtremumType findExtremumType(UnivariateDifferentiableFunction function, double x) {
+        double secondDerivative = function.value(
+                new DerivativeStructure(1, 2, 0, x)
+        ).getPartialDerivative(2);
+
+        if (secondDerivative > 0) {
+            return ExtremumType.MIN;
+        } else if (secondDerivative < 0) {
+            return ExtremumType.MAX;
+        } else {
+            return ExtremumType.UNKNOWN;
         }
     }
 }

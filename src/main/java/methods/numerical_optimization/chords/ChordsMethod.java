@@ -1,22 +1,25 @@
 package methods.numerical_optimization.chords;
 
 import lombok.AllArgsConstructor;
+import methods.DerivativeUnivariativeExtremumSearchMethod;
 import methods.UnivariativeExtremumSearchMethod;
 import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.utils.ExtremumType;
 import org.apache.commons.math3.analysis.differentiation.DerivativeStructure;
 import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction;
 
+import java.util.Optional;
+
 import static java.lang.Math.abs;
 
 @AllArgsConstructor
-public class ChordsMethod extends UnivariativeExtremumSearchMethod {
+public class ChordsMethod extends DerivativeUnivariativeExtremumSearchMethod {
 
     @Override
     public TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,
-                                                         double accuracy,
-                                                         double start,
-                                                         double end) {
+                                                                   double accuracy,
+                                                                   double start,
+                                                                   double end) {
         double xk = start;
 
         double derivativeInXk = function.value(
@@ -37,7 +40,7 @@ public class ChordsMethod extends UnivariativeExtremumSearchMethod {
             ).getPartialDerivative(1);
         }
 
-        ExtremumType type = findExtremumType(function, start);
+        ExtremumType type = findExtremumType(function, xk - accuracy);
         return TwoDimensionalExtremumPoint.of(xk, function.value(xk), type);
     }
 

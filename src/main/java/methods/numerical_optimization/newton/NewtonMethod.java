@@ -1,5 +1,6 @@
 package methods.numerical_optimization.newton;
 
+import methods.DerivativeUnivariativeExtremumSearchMethod;
 import methods.UnivariativeExtremumSearchMethod;
 import methods.utils.points.extremum_points.TwoDimensionalExtremumPoint;
 import methods.utils.ExtremumType;
@@ -8,7 +9,7 @@ import org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiabl
 
 import static java.lang.Math.abs;
 
-public class NewtonMethod extends UnivariativeExtremumSearchMethod {
+public class NewtonMethod extends DerivativeUnivariativeExtremumSearchMethod {
 
     @Override
     public TwoDimensionalExtremumPoint findExtremumPoint(UnivariateDifferentiableFunction function,
@@ -29,7 +30,7 @@ public class NewtonMethod extends UnivariativeExtremumSearchMethod {
             ).getPartialDerivative(1);
         }
 
-        ExtremumType type = findExtremumType(function, start);
+        ExtremumType type = findExtremumType(function, xk - accuracy);
         return TwoDimensionalExtremumPoint.of(xk, function.value(xk), type);
     }
 
