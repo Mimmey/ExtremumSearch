@@ -7,12 +7,12 @@ import java.util.Optional;
 
 public abstract class UnivariativeExtremumSearchMethod {
 
-    public abstract Optional<TwoDimensionalExtremumPoint> findMinExtremumPoint(UnivariateDifferentiableFunction function,
+    public abstract Optional<TwoDimensionalExtremumPoint> findMinPoint(UnivariateDifferentiableFunction function,
                                                                                double accuracy,
                                                                                double start,
                                                                                double end);
 
-    public abstract Optional<TwoDimensionalExtremumPoint> findMaxExtremumPoint(UnivariateDifferentiableFunction function,
+    public abstract Optional<TwoDimensionalExtremumPoint> findMaxPoint(UnivariateDifferentiableFunction function,
                                                                                double accuracy,
                                                                                double start,
                                                                                double end);

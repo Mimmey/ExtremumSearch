@@ -67,15 +67,9 @@ public class GradientDescentMethod extends DerivativeTernaryExtremumSearchMethod
 
         UnivariativeExtremumSearchMethod optimizationMethod = new ChordsMethod();
 
-        return optimizationMethod.findMinExtremumPoint(
+        return optimizationMethod.findMinPoint(
                 stepOptimizationFunction, accuracy, 0, 1
-        ).orElseGet(() -> {
-            if (stepOptimizationFunction.value(0) < stepOptimizationFunction.value(0.01)) {
-                return TwoDimensionalExtremumPoint.of(0, stepOptimizationFunction.value(0), ExtremumType.MIN);
-            }
-
-            return TwoDimensionalExtremumPoint.of(0.01, stepOptimizationFunction.value(0.01), ExtremumType.MIN);
-        }).getX();
+        ).get().getX();
     }
 
     private UnivariateDifferentiableFunction tryFindStepOptimizationFunction(TernaryDifferentiableFunction function,

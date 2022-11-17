@@ -10,13 +10,38 @@ import java.util.Optional;
 public abstract class DerivativeUnivariativeExtremumSearchMethod extends UnivariativeExtremumSearchMethod {
 
     @Override
+    public Optional<TwoDimensionalExtremumPoint> findMinPoint(UnivariateDifferentiableFunction function,
+                                                                      double accuracy,
+                                                                      double start,
+                                                                      double end) {
+        Optional<TwoDimensionalExtremumPoint> point = findMinExtremumPoint(function, accuracy, start, end);
+
+        if (point.isEmpty()) {
+           if (function.value(end) < function.value(start)) {
+               return Optional.of(TwoDimensionalExtremumPoint.of(end, function.value(end), ExtremumType.MIN));
+           }
+
+           return Optional.of(TwoDimensionalExtremumPoint.of(start, function.value(start), ExtremumType.MIN));
+        }
+
+        if (function.value(start) < point.get().getY()) {
+            return Optional.of(TwoDimensionalExtremumPoint.of(start, function.value(start), ExtremumType.MIN));
+        }
+
+        if (function.value(end) < point.get().getY()) {
+            return Optional.of(TwoDimensionalExtremumPoint.of(end, function.value(end), ExtremumType.MIN));
+        }
+
+        return point;
+    }
+
     public Optional<TwoDimensionalExtremumPoint> findMinExtremumPoint(UnivariateDifferentiableFunction function,
                                                                       double accuracy,
                                                                       double start,
                                                                       double end) {
         TwoDimensionalExtremumPoint extremumPoint = findExtremumPoint(function, accuracy, start, end);
 
-        if (extremumPoint.getType().equals(ExtremumType.MIN)) {
+        if (extremumPoint.getType().equals(ExtremumType.MIN) && extremumPoint.getX() >= start && extremumPoint.getX() <= end) {
             return Optional.of(extremumPoint);
         } else {
             return Optional.empty();
@@ -24,13 +49,38 @@ public abstract class DerivativeUnivariativeExtremumSearchMethod extends Univari
     }
 
     @Override
+    public Optional<TwoDimensionalExtremumPoint> findMaxPoint(UnivariateDifferentiableFunction function,
+                                                              double accuracy,
+                                                              double start,
+                                                              double end) {
+        Optional<TwoDimensionalExtremumPoint> point = findMaxExtremumPoint(function, accuracy, start, end);
+
+        if (point.isEmpty()) {
+            if (function.value(start) < function.value(end)) {
+                return Optional.of(TwoDimensionalExtremumPoint.of(end, function.value(end), ExtremumType.MAX));
+            }
+
+            return Optional.of(TwoDimensionalExtremumPoint.of(start, function.value(start), ExtremumType.MAX));
+        }
+
+        if (function.value(start) > point.get().getY()) {
+            return Optional.of(TwoDimensionalExtremumPoint.of(start, function.value(start), ExtremumType.MAX));
+        }
+
+        if (function.value(end) > point.get().getY()) {
+            return Optional.of(TwoDimensionalExtremumPoint.of(end, function.value(end), ExtremumType.MAX));
+        }
+
+        return point;
+    }
+
     public Optional<TwoDimensionalExtremumPoint> findMaxExtremumPoint(UnivariateDifferentiableFunction function,
                                                                       double accuracy,
                                                                       double start,
                                                                       double end) {
         TwoDimensionalExtremumPoint extremumPoint = findExtremumPoint(function, accuracy, start, end);
 
-        if (extremumPoint.getType().equals(ExtremumType.MAX)) {
+        if (extremumPoint.getType().equals(ExtremumType.MAX) && extremumPoint.getX() >= start && extremumPoint.getX() <= end) {
             return Optional.of(extremumPoint);
         } else {
             return Optional.empty();

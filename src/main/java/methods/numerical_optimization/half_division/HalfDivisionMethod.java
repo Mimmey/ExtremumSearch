@@ -10,7 +10,7 @@ import java.util.Optional;
 public class HalfDivisionMethod extends UnivariativeExtremumSearchMethod {
 
     @Override
-    public Optional<TwoDimensionalExtremumPoint> findMinExtremumPoint(UnivariateDifferentiableFunction function,
+    public Optional<TwoDimensionalExtremumPoint> findMinPoint(UnivariateDifferentiableFunction function,
                                                                       double accuracy,
                                                                       double start,
                                                                       double end) {
@@ -35,7 +35,7 @@ public class HalfDivisionMethod extends UnivariativeExtremumSearchMethod {
     }
 
     @Override
-    public Optional<TwoDimensionalExtremumPoint> findMaxExtremumPoint(UnivariateDifferentiableFunction function,
+    public Optional<TwoDimensionalExtremumPoint> findMaxPoint(UnivariateDifferentiableFunction function,
                                                             double accuracy,
                                                             double start,
                                                             double end) {

@@ -20,7 +20,7 @@ public class Main {
         GradientDescentMethod gradientDescent = new GradientDescentMethod();
 
         FourDimensionalExtremumPoint extremumPoint =
-                gradientDescent.findMaxExtremumPoint(function, accuracy, startPoint)
+                gradientDescent.findMinExtremumPoint(function, accuracy, startPoint)
                         .orElse(FourDimensionalExtremumPoint
                                 .of(DUMMY, DUMMY, DUMMY, DUMMY, ExtremumType.UNKNOWN));
 

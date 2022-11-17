@@ -28,23 +28,23 @@ public class Main {
         UnivariativeExtremumSearchMethod squareInterpolationMethod = new SquareInterpolationMethod();
 
         TwoDimensionalExtremumPoint halfDivisionExtremumPoint =
-                halfDivisionMethod.findMinExtremumPoint(function, accuracy, a, b)
+                halfDivisionMethod.findMinPoint(function, accuracy, a, b)
                         .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint goldenRatioExtremumPoint =
-                goldenRatioMethod.findMinExtremumPoint(function, accuracy, a, b)
+                goldenRatioMethod.findMinPoint(function, accuracy, a, b)
                         .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint chordsExtremumPoint =
-                chordsMethod.findMinExtremumPoint(function, accuracy, a, b)
+                chordsMethod.findMinPoint(function, accuracy, a, b)
                         .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint newtonExtremumPoint =
-                newtonMethod.findMinExtremumPoint(function, accuracy, a, b)
+                newtonMethod.findMinPoint(function, accuracy, a, b)
                         .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         TwoDimensionalExtremumPoint squareInterpolationExtremumPoint =
-                squareInterpolationMethod.findMinExtremumPoint(function, accuracy, a, b)
+                squareInterpolationMethod.findMinPoint(function, accuracy, a, b)
                         .orElse(TwoDimensionalExtremumPoint.of(DUMMY, DUMMY, ExtremumType.UNKNOWN));
 
         System.out.println("Half division: " + halfDivisionExtremumPoint.toString());
